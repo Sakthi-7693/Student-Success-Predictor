@@ -8,4 +8,6 @@
 
 # Step 4 --> Created a file structure in Source folder
 
-# Step 4 --> 
+# Step 5 --> Written code in ("logger.py", "Exception.py" and "setup.py")
+
+# Step 6 --> Implemented the Machine learning model and completed EDA Process
