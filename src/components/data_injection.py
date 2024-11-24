@@ -5,6 +5,8 @@ from src.exception import CustomException
 from sklearn.model_selection import train_test_split
 import pandas as pd
 from dataclasses import dataclass
+from src.utils import save_object
+from src.components.data_transformation import DataTransformation
 
 #This code will create the artifacts folder and create a (train,test,data csv file)
 @dataclass
@@ -20,7 +22,7 @@ class DataInjection:
     def initiate_data_injection(self):
         logging.info("Entered into data injection method")
         try:
-            df = pd.read_csv('Model_Evaluation\StudentsPerformance.csv')
+            df = pd.read_csv(r"C:\Student-Success-Predictor\Model_Evaluation\StudentsPerformance.csv")
             logging.info("Sucessfully readed the dataset as dataframe")
 
             os.makedirs(os.path.dirname(self.injection_config.train_data_path), exist_ok=True)
@@ -46,4 +48,7 @@ class DataInjection:
             
 if __name__=="__main__":
     obj = DataInjection()
-    obj.initiate_data_injection()
+    train_data, test_data = obj.initiate_data_injection()
+
+    data_transformation = DataTransformation()
+    data_transformation.initiate_data_transformation(train_data,test_data)
